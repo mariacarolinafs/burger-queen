@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import firebase from './utils/firebaseUtils.js'
 
 function App() {
+  const [menu, setMenu] = useState([]);
+
+  useEffect(() => {
+    firebase.firestore().collection('menu').get()
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          // doc.data() is never undefined for query doc snapshots
+          setMenu((current) => [...current, doc.data()]);
+        });
+      })
+  }, [])
+
+  console.log(menu)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {
+        menu.map(elem => <p>{elem.name}</p>)
+      }
     </div>
   );
 }
