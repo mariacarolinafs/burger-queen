@@ -1,28 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import firebase from './utils/firebaseUtils.js'
+import React from 'react';
+//import './App.css';
+import Menu from './components/Menu/menu.js'
+import Kitchen from './pages/kitchen.js'
+import Service from './pages/service.js'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 function App() {
-  const [menu, setMenu] = useState([]);
-
-  useEffect(() => {
-    firebase.firestore().collection('menu').get()
-      .then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          // doc.data() is never undefined for query doc snapshots
-          setMenu((current) => [...current, doc.data()]);
-        });
-      })
-  }, [])
-
-  console.log(menu)
-
   return (
-    <div>
-      {
-        menu.map(elem => <p>{elem.name}</p>)
-      }
-    </div>
+    <Menu></Menu>
   );
 }
 
