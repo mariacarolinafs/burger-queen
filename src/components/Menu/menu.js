@@ -30,6 +30,8 @@ const Menu = () => {
       })
   }, [])
 
+
+
   function onSubmit(e) {
     e.preventDefault()
     firebase.firestore().collection('client').add({
@@ -43,10 +45,14 @@ const Menu = () => {
     })
   }
 
-
-
   const add = (item) => {
     setOrder([...order, item])
+  }
+
+  const deleteItem = (item) => {
+    const remove = (order.findIndex((e)=> e.name == item.name))
+    order.splice(remove, 1);
+    setOrder([...order]);
   }
 
 
@@ -55,7 +61,10 @@ const Menu = () => {
       <div className='menu.item'>
         {item1.map((breakfast) => <Card handleClick={() => add(breakfast)} key={breakfast.id} name={breakfast.name} price={breakfast.price} />)}
         {item2.map((lunch) => <Card handleClick={() => add(lunch)} key={lunch.id} name={lunch.name} price={lunch.price} />)}
-        {order.map(product => <div key={product.id}> {product.name} {product.price}</div>)}
+        {order.map((product, index) => <div key={product.id+index}> {product.name} {product.price}<Button id='button-delete' handleClick={(e) => {
+          e.preventDefault();
+          deleteItem(product);
+        }} text={'deletar'} /></div>)}
       </div>
       <div>
         <label>
