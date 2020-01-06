@@ -1,8 +1,8 @@
 .menu-card {
     float: left;
     justify-content: center;
-    margin: 20px;
     padding: 10px;
     background-color: green;
-    
+    width: 150px;
+    height: 80px;
 }

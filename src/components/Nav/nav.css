@@ -1,0 +1,28 @@
+*{transition:all 0.3s ease-in-out;}
+
+.nav {
+  clear:both;
+  overflow:auto;
+  background-color: burlywood;
+}
+
+nav {
+    float:right;
+}
+
+.logo img {
+    float:left;
+}
+
+ul li {
+  display: inline-block; 
+  padding:10px;
+  font-size:20px; 
+  font-family:raleway;
+  text-decoration-color: brown;
+}
+
+
+ul li:hover {
+  color:orange;
+}

@@ -1,0 +1,16 @@
+.menu-breakfast {
+    display: flex;
+    border: 5px;
+    flex-direction: column;
+}
+
+.menu-lunch {
+    display: flex;
+    border: 5px;
+    flex-direction: column;
+}
+
+.order {
+    display:flex;
+    border: 5px;
+}

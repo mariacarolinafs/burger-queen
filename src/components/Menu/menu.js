@@ -4,6 +4,8 @@ import Card from '../Card/card.js';
 import Button from '../Button/button.js'
 import Input from '../Input/input.js'
 import '../Card/card.css'
+import '../Menu/menu.css'
+import { element } from 'prop-types';
 
 const Menu = () => {
   const [client, setClient] = useState('');
@@ -47,36 +49,72 @@ const Menu = () => {
 
   const add = (item) => {
     setOrder([...order, item])
+    if (!order.includes(item)) {
+      item.count = 1;
+      setOrder([...order, item])
+    }
+    else {
+      item.count += 1;
+      setOrder([...order])
+    }
   }
 
   const deleteItem = (item) => {
-    const remove = (order.findIndex((e)=> e.name == item.name))
+    const remove = (order.findIndex((e) => e.name == item.name))
     order.splice(remove, 1);
     setOrder([...order]);
   }
 
+  const total = order.reduce((acc, item) => acc + (item.count * item.price), 0)
+
+  // const contador = (item) => {
+  //   if(!order.includes(item)) {
+  //     item.count = 1;
+  //     setOrder([...order, item])
+  //   }
+  //   else{
+  //     item.count += 1;
+  //     setOrder([...order])
+  //   }
+  // }
+
 
   return (
     <>
-      <div className='menu.item'>
-        {item1.map((breakfast) => <Card handleClick={() => add(breakfast)} key={breakfast.id} name={breakfast.name} price={breakfast.price} />)}
-        {item2.map((lunch) => <Card handleClick={() => add(lunch)} key={lunch.id} name={lunch.name} price={lunch.price} />)}
-        {order.map((product, index) => <div key={product.id+index}> {product.name} {product.price}<Button id='button-delete' handleClick={(e) => {
-          e.preventDefault();
-          deleteItem(product);
-        }} text={'deletar'} /></div>)}
-      </div>
-      <div>
-        <label>
-          <strong>CLIENTE</strong>
-        </label>
-        <Input id='input-number' type='text' state={client} handleChange={e => setClient(e.currentTarget.value)} />
-        <label>
-          <strong>MESA</strong>
-        </label>
-        <Input id='input-number' type='number' state={table} handleChange={e => setTable(e.currentTarget.value)} />
-        <Button id='button-send' handleClick={onSubmit} text={'enviar'} />
-      </div>
+      <section class="menu-breakfast">
+        <div className='menu.item'>
+          <p>MENU DE CAFÉ DA MANHÃ</p>
+          {item1.map((breakfast) => <Card handleClick={() => add(breakfast)} key={breakfast.id} name={breakfast.name} price={breakfast.price} />)}
+        </div>
+      </section>
+      <section class="menu-lunch">
+        <div className='menu.lunch'>
+          <p>MENU TRADICIONAL</p>
+          {item2.map((lunch) => <Card handleClick={() => add(lunch)} key={lunch.id} name={lunch.name} price={lunch.price} />)}
+        </div>
+      </section>
+      <section class="order">
+        <div>
+          <p>PEDIDO</p>
+          {order.map((product, index) => <div key={product.id + index}> {product.name} {product.price} {product.count}
+            <Button id='button-delete' handleClick={(e) => {
+              e.preventDefault();
+              deleteItem(product);
+            }} text={'deletar'} /></div>)}
+          <p class="total">{total}</p>
+          <div>
+            <strong>CLIENTE</strong>
+          </div>
+          <Input id='input-number' type='text' state={client} handleChange={e => setClient(e.currentTarget.value)} />
+          <div>
+            <strong>MESA</strong>
+          </div>
+          <Input id='input-number' type='number' state={table} handleChange={e => setTable(e.currentTarget.value)} />
+
+          <Button id='button-send' handleClick={onSubmit} text={'enviar'} />
+        </div>
+
+      </section>
     </>
   );
 };
