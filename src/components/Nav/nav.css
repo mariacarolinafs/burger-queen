@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Asap+Condensed:700|Open+Sans&display=swap');
+
+
 *{transition:all 0.3s ease-in-out;}
 
 .nav {
   clear:both;
   overflow:auto;
-  background-color: burlywood;
+  background-color: #424242;
+  padding: 10px;
 }
 
 nav {
@@ -16,13 +20,16 @@ nav {
 
 ul li {
   display: inline-block; 
-  padding:10px;
-  font-size:20px; 
-  font-family:raleway;
-  text-decoration-color: brown;
+  padding:15px;
 }
 
+.link {
+  color: white;
+  text-decoration: none;
+  font-family: 'Asap Condensed', sans-serif;
+  font-size: 35px;
+}
 
-ul li:hover {
+.link:hover {
   color:orange;
 }

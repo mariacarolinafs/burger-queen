@@ -59,6 +59,18 @@ const Menu = () => {
     }
   }
 
+  const addmenos = (item) => {
+    if(item.count === 1) {
+      const addmenoss = order.filter(product => {
+        return product != item
+      })
+      setOrder([...addmenoss])
+    } else {
+    item.count --
+    setOrder([...order])
+    }
+  }
+
   const deleteItem = (item) => {
     const remove = (order.findIndex((e) => e.name == item.name))
     order.splice(remove, 1);
@@ -67,41 +79,30 @@ const Menu = () => {
 
   const total = order.reduce((acc, item) => acc + (item.count * item.price), 0)
 
-  // const contador = (item) => {
-  //   if(!order.includes(item)) {
-  //     item.count = 1;
-  //     setOrder([...order, item])
-  //   }
-  //   else{
-  //     item.count += 1;
-  //     setOrder([...order])
-  //   }
-  // }
-
 
   return (
     <>
       <section class="menu-breakfast">
         <div className='menu.item'>
           <p>MENU DE CAFÉ DA MANHÃ</p>
-          {item1.map((breakfast) => <Card handleClick={() => add(breakfast)} key={breakfast.id} name={breakfast.name} price={breakfast.price} />)}
+          {item1.map((breakfast) => <Card handleClick={() => add(breakfast)} key={breakfast.id} name={breakfast.name} price={breakfast.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} />)}
         </div>
       </section>
       <section class="menu-lunch">
         <div className='menu.lunch'>
           <p>MENU TRADICIONAL</p>
-          {item2.map((lunch) => <Card handleClick={() => add(lunch)} key={lunch.id} name={lunch.name} price={lunch.price} />)}
+          {item2.map((lunch) => <Card handleClick={() => add(lunch)} key={lunch.id} name={lunch.name} price={lunch.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} image={lunch.image} />)}
         </div>
       </section>
       <section class="order">
         <div>
           <p>PEDIDO</p>
-          {order.map((product, index) => <div key={product.id + index}> {product.name} {product.price} {product.count}
+          {order.map((product, index) => <div key={product.id + index}> {product.name} {product.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} {product.count}
             <Button id='button-delete' handleClick={(e) => {
               e.preventDefault();
               deleteItem(product);
-            }} text={'deletar'} /></div>)}
-          <p class="total">{total}</p>
+            }} text={'deletar'} /><Button id="button-add" handleClick={(e) => {add(product)}} text={'mais'} /><Button id="button-add" handleClick={() => addmenos(product)} text={'menos'} /></div>)}
+          <p class="total">{total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</p>
           <div>
             <strong>CLIENTE</strong>
           </div>

@@ -2,7 +2,13 @@
     float: left;
     justify-content: center;
     padding: 10px;
-    background-color: green;
+    margin: 10px;
     width: 150px;
     height: 80px;
+    border: 2px;
+}
+
+.image {
+    padding: 2px;
+    width: 100px;
 }
