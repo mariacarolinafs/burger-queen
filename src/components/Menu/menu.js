@@ -7,14 +7,14 @@ import '../Card/card.css'
 import '../Menu/menu.css'
 
 const Menu = () => {
-  const [ client, setClient ] = useState('');
-  const [ table, setTable ] = useState('');
-  const [ order, setOrder ] = useState([]);
-  const [ item1, setItem1 ] = useState([]);
-  const [ item2, setItem2 ] = useState([]);
-  const [ modal, setModal] = useState({status: false});
-  const [ options, setOptions ] = useState('');
-  const [ extras, setExtras ] = useState('');
+  const [client, setClient] = useState('');
+  const [table, setTable] = useState('');
+  const [order, setOrder] = useState([]);
+  const [item1, setItem1] = useState([]);
+  const [item2, setItem2] = useState([]);
+  const [modal, setModal] = useState({ status: false });
+  const [options, setOptions] = useState('');
+  const [extras, setExtras] = useState('');
 
 
   useEffect(() => {
@@ -59,6 +59,9 @@ const Menu = () => {
       item.count += 1;
       setOrder([...order])
     }
+    setOptions('')
+    setExtras([])
+    setModal({status: false})
   }
 
   const addmenos = (item) => {
@@ -80,25 +83,23 @@ const Menu = () => {
   }
 
   const verifyOptions = (item2) => {
-      console.log(item2)
-    if(item2.options.length !== 0){
-      console.log("oi")
-      setModal({status: true, item: item2})
-    }else{
+    if (item2.options.length !== 0) {
+      setModal({ status: true, item: item2 })
+    } else {
       add(item2)
     }
   }
-   
+
 
   const total = order.reduce((acc, item) => acc + (item.count * item.price), 0)
 
 
   return (
     <>
-      <section class="menu-breakfast">
+      <section className="menu-breakfast">
         <div className='menu.item'>
-          <p class="breakfast">MENU DE CAFÉ DA MANHÃ</p>
-          {item1.map((breakfast) => <Card  handleClick={() => add(breakfast)}
+          <p className="breakfast">MENU DE CAFÉ DA MANHÃ</p>
+          {item1.map((breakfast) => <Card handleClick={() => add(breakfast)}
             key={breakfast.id}
             name={breakfast.name}
             price={breakfast.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
@@ -116,21 +117,25 @@ const Menu = () => {
         </div>
       </section>
       {modal.status ? (
+        <div>
+          <h3>EXTRAS</h3>
+          <div>{modal.item.extras.map(elem => (<>
+            <input type="radio" name="extras" value={elem} onChange={() => setExtras(`${extras} ${elem}`)} /><label>{elem}</label></>))}</div>
           <div>
-            <h3>Extras</h3>
-            <div>{modal.item.extras.map(elem => (<>
-            <input type="radio" name="extras" value={elem} onChange={() => setExtras(`${extras} ${elem}`)}/><label>{elem}</label></>))}</div>
-            <button onClick={() => add({...modal.item, name: modal.item.name + " " + extras})}>Adicionar</button>
-          </div>
-        ): false}
+            <h3>OPÇÕES</h3>
+            <div>{modal.item.options.map(elem => (<>
+              <input type="radio" name="options" value={elem} onChange={() => setOptions(`${options} ${elem}`)} /><label>{elem}</label></>))}</div>
+            <button onClick={() => add({ ...modal.item, name: modal.item.name + " " + options + extras })}>Adicionar</button>
+        </div></div>
+        ) : false}
       <section class="order">
         <div>
-        
-          <p class="order">PEDIDO</p>
+
+          <p class="order-title">PEDIDO</p>
           {order.map((product, index) =>
             <div key={product.id + index}>
               {product.name}
-              {product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+              {product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} 
               {product.count}
               <Button id='button-delete' handleClick={(e) => {
                 e.preventDefault();

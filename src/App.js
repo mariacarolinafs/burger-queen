@@ -8,8 +8,7 @@ import Nav from './components/Nav/nav.js'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 
@@ -19,8 +18,8 @@ function App() {
     <div>
       <Nav />
       <Switch>
-        <Route path="/service" component={Service} />
-        <Route path="/kitchen" component={Kitchen} />
+        <Route exact  path="/service" component={Service} />
+        <Route exact path="/kitchen" component={Kitchen} />
       </Switch>
     </div>
   </Router>

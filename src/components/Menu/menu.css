@@ -1,7 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Asap+Condensed:700|Open+Sans&display=swap');
+
 .menu-breakfast {
     display: flex;
     border-top: 5px;
     flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
 }
 
 .menu-lunch {
@@ -13,34 +25,16 @@
 .order {
     display:flex;
     border: 5px;
-}
-
-.lunch {
     font-family: 'Asap Condensed', sans-serif;
     font-size: 25px;
     color: #65382e;
+    text-align: center;
 }
 
-.breakfast {
+.lunch, .breakfast, .client, .table, .order-title {
     font-family: 'Asap Condensed', sans-serif;
     font-size: 25px;
     color: #65382e;
+    text-align: center;
 }
 
-.client {
-    font-family: 'Asap Condensed', sans-serif;
-    font-size: 25px;
-    color: #65382e;
-}
-
-.table {
-    font-family: 'Asap Condensed', sans-serif;
-    font-size: 25px;
-    color: #65382e;
-}
-
-.order {
-    font-family: 'Asap Condensed', sans-serif;
-    font-size: 25px;
-    color: #65382e;
-}

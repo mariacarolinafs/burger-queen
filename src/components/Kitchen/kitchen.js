@@ -10,19 +10,20 @@ const KitchenApp = () => {
 
 
     useEffect(() => {
-        const order = [];
-        firebase.firestore().collection('client').get().then(querySnapshot => (
+        const order2 = [];
+        firebase.firestore().collection('client').get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
-                order.push({
+                order2.push({
                     id: doc.id,
                     ...doc.data()
                 })
             }
-            ))
-        )
-        setOrder(order)
+            )
+            setOrder(order2)
+        })
     }, [])
 
+    console.log('chamou')
 
     return (
         <>
