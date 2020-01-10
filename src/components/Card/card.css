@@ -1,14 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Asap+Condensed:700|Open+Sans&display=swap');
+
+
 .menu-card {
     float: left;
     justify-content: center;
-    padding: 10px;
-    margin: 10px;
-    width: 150px;
-    height: 80px;
-    border: 2px;
+    height: 300px;
+    width: 250px;
+    border-radius: 5px;
+    box-shadow: -5px 7px 13px rgb(116, 113, 113);
 }
 
 .image {
-    padding: 2px;
-    width: 100px;
+    width: 150px;
+    align-content: center;
+    float: center;
+    align-items: center;
+}
+
+.name{
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 20px;
+    color: #65382e;
+}
+
+.price {
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 18px;
+    color: #65382e;
 }

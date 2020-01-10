@@ -1,16 +1,46 @@
 .menu-breakfast {
     display: flex;
-    border: 5px;
+    border-top: 5px;
     flex-direction: column;
 }
 
 .menu-lunch {
     display: flex;
-    border: 5px;
+    border-top: 5px;
     flex-direction: column;
 }
 
 .order {
     display:flex;
     border: 5px;
+}
+
+.lunch {
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 25px;
+    color: #65382e;
+}
+
+.breakfast {
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 25px;
+    color: #65382e;
+}
+
+.client {
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 25px;
+    color: #65382e;
+}
+
+.table {
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 25px;
+    color: #65382e;
+}
+
+.order {
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 25px;
+    color: #65382e;
 }

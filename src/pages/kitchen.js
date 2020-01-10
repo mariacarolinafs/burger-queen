@@ -1,8 +1,11 @@
 import React from 'react';
+import KitchenApp from '../components/Kitchen/kitchen.js'
 
 function Kitchen () {
     return (
-        <div> Pedido Aqui</div>
+        <div> 
+            <KitchenApp/>
+        </div>
     )
 }
 
