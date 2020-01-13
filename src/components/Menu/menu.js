@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import firebase from '../../utils/firebase.js';
+import Nav from '../Nav/nav.js'
 import Card from '../Card/card.js';
 import Button from '../Button/button.js'
 import Input from '../Input/input.js'
@@ -96,6 +97,7 @@ const Menu = () => {
 
   return (
     <>
+    <Nav />
       <section className="menu-breakfast">
         <div className='menu.item'>
           <p className="breakfast">MENU DE CAFÉ DA MANHÃ</p>
@@ -136,13 +138,12 @@ const Menu = () => {
             <div key={product.id + index}>
               {product.name}
               {product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} 
+              <Button id="button-add" handleClick={(e) => { add(product) }} text={'mais'} />
               {product.count}
-              <Button id='button-delete' handleClick={(e) => {
-                e.preventDefault();
+              <Button id="button-add" handleClick={() => addmenos(product)} text={'menos'} />
+              <Button id='button-delete' handleClick={(e) => {e.preventDefault();
                 deleteItem(product);
               }} text={'deletar'} />
-              <Button id="button-add" handleClick={(e) => { add(product) }} text={'mais'} />
-              <Button id="button-add" handleClick={() => addmenos(product)} text={'menos'} />
             </div>)}
           <p class="total">{total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
           <div>

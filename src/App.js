@@ -5,6 +5,7 @@ import './components/Card/card.css'
 import Kitchen from './pages/kitchen.js'
 import Service from './pages/service.js'
 import Nav from './components/Nav/nav.js'
+import Home from './components/Home/home.js'
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,7 +17,7 @@ function App() {
   return (
   <Router>
     <div>
-      <Nav />
+      <Home />
       <Switch>
         <Route exact  path="/service" component={Service} />
         <Route exact path="/kitchen" component={Kitchen} />

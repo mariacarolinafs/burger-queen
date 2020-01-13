@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Asap+Condensed:700|Open+Sans&display=swap');
+
+
+
+ul li {
+    display: inline-block; 
+    padding:15px;
+  }
+  
+  .link {
+    color: white;
+    text-decoration: none;
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 35px;
+  }
+  
+  .link:hover {
+    color:orange;
+  }

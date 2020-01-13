@@ -1,25 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Asap+Condensed:700|Open+Sans&display=swap');
 
 .menu-breakfast {
-    display: flex;
     border-top: 5px;
     flex-direction: column;
-    justify-content: center;
-    justify-items: center;
+    display: flex;
+    justify-content: space-around;
 }
 
 .menu-item {
     display: flex;
-    justify-content: center;
-    justify-items: center;
-    align-content: center;
-    align-items: center;
+    justify-content: space-around;
 }
 
 .menu-lunch {
-    display: flex;
     border-top: 5px;
     flex-direction: column;
+    display: flex;
+    justify-content: space-around;
 }
 
 .order {
@@ -36,5 +33,6 @@
     font-size: 25px;
     color: #65382e;
     text-align: center;
+    
 }
 
