@@ -1,22 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Asap+Condensed:700|Open+Sans&display=swap');
 
-.menu-breakfast {
-    border-top: 5px;
-    flex-direction: column;
+.menu {
     display: flex;
     justify-content: space-around;
 }
 
 .menu-item {
     display: flex;
-    justify-content: space-around;
+    flex-flow: wrap;
+    flex-direction: row;
+    justify-content: center;
 }
 
-.menu-lunch {
+.menu-breakfast, .menu-lunch {
     border-top: 5px;
-    flex-direction: column;
+    flex-direction: row;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    flex-flow: wrap;
 }
 
 .order {
@@ -26,6 +27,8 @@
     font-size: 25px;
     color: #65382e;
     text-align: center;
+    justify-content: center;
+    margin-bottom: 100px;
 }
 
 .lunch, .breakfast, .client, .table, .order-title {
@@ -33,6 +36,11 @@
     font-size: 25px;
     color: #65382e;
     text-align: center;
-    
 }
 
+.modal {
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 25px;
+    color: #65382e;
+    text-align: center;
+}

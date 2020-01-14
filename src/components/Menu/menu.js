@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import firebase from '../../utils/firebase.js';
-import Nav from '../Nav/nav.js'
 import Card from '../Card/card.js';
 import Button from '../Button/button.js'
 import Input from '../Input/input.js'
@@ -42,11 +41,13 @@ const Menu = () => {
     firebase.firestore().collection('client').add({
       client,
       table: parseInt(table),
-      order
+      order,
+      date: new Date().getTime()
     }).then(() => {
       setTable('')
       setClient('')
       setOrder([])
+
     })
   }
 
@@ -62,7 +63,7 @@ const Menu = () => {
     }
     setOptions('')
     setExtras([])
-    setModal({status: false})
+    setModal({ status: false })
   }
 
   const addmenos = (item) => {
@@ -91,71 +92,75 @@ const Menu = () => {
     }
   }
 
-
   const total = order.reduce((acc, item) => acc + (item.count * item.price), 0)
-
 
   return (
     <>
-    <Nav />
-      <section className="menu-breakfast">
-        <div className='menu.item'>
-          <p className="breakfast">MENU DE CAFÉ DA MANHÃ</p>
-          {item1.map((breakfast) => <Card handleClick={() => add(breakfast)}
-            key={breakfast.id}
-            name={breakfast.name}
-            price={breakfast.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-            image={breakfast.image} />)}
-        </div>
-      </section>
-      <section class="menu-lunch">
-        <div className='menu.lunch'>
+      <div className="second-menu">
+        <p className="breakfast">MENU DE CAFÉ DA MANHÃ</p>
+        <section className="menu-breakfast">
+          <div className='menu-item'>
+            {item1.map((breakfast) => <Card handleClick={() => add(breakfast)}
+              key={breakfast.id}
+              name={breakfast.name}
+              price={breakfast.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+              image={breakfast.image} />)}
+          </div>
+        </section>
+      </div>
+      <div className="second-menu">
+        <section className="menu-lunch">
           <p class="lunch">MENU TRADICIONAL</p>
-          {item2.map((lunch) => <Card handleClick={() => verifyOptions(lunch)}
-            key={lunch.id}
-            name={lunch.name}
-            price={lunch.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-            image={lunch.image} />)}
-        </div>
-      </section>
+          <div className='menu-item'>
+
+            {item2.map((lunch) => <Card handleClick={() => verifyOptions(lunch)}
+              key={lunch.id}
+              name={lunch.name}
+              price={lunch.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+              image={lunch.image} />)}
+          </div>
+        </section>
+      </div>
       {modal.status ? (
-        <div>
+        <div className="modal">
           <h3>EXTRAS</h3>
           <div>{modal.item.extras.map(elem => (<>
             <input type="radio" name="extras" value={elem} onChange={() => setExtras(`${extras} ${elem}`)} /><label>{elem}</label></>))}</div>
           <div>
             <h3>OPÇÕES</h3>
             <div>{modal.item.options.map(elem => (<>
-              <input type="radio" name="options" value={elem} onChange={() => setOptions(`${options} ${elem}`)} /><label>{elem}</label></>))}</div>
+              <input type="radio" name="options" value={elem} onChange={() => setOptions(`${options} ${elem}`)} /><label>{elem}</label></>))}
+            </div>
             <button onClick={() => add({ ...modal.item, name: modal.item.name + " " + options + extras })}>Adicionar</button>
-        </div></div>
-        ) : false}
-      <section class="order">
+          </div>
+        </div>
+      ) : false}
+      <section className="order">
         <div>
-
-          <p class="order-title">PEDIDO</p>
+          <p className="order-title">PEDIDO</p>
           {order.map((product, index) =>
             <div key={product.id + index}>
               {product.name}
-              {product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} 
-              <Button id="button-add" handleClick={(e) => { add(product) }} text={'mais'} />
+              {product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+              <Button id="button-add" handleClick={(e) => { add(product) }} text={'+'} />
               {product.count}
-              <Button id="button-add" handleClick={() => addmenos(product)} text={'menos'} />
-              <Button id='button-delete' handleClick={(e) => {e.preventDefault();
+              <Button id="button-add" handleClick={() => addmenos(product)} text={'-'} />
+              <Button id='button-delete' handleClick={(e) => {
+                e.preventDefault();
                 deleteItem(product);
-              }} text={'deletar'} />
+              }} text={'DELETAR'} />
             </div>)}
-          <p class="total">{total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+          <p className="total">{total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
           <div>
-            <strong class="client">CLIENTE</strong>
+            <strong className="client">CLIENTE</strong>
           </div>
           <Input id='input-number' type='text' state={client} handleChange={e => setClient(e.currentTarget.value)} />
           <div>
-            <strong class="table">MESA</strong>
+            <strong className="table">MESA</strong>
           </div>
           <Input id='input-number' type='number' state={table} handleChange={e => setTable(e.currentTarget.value)} />
 
-          <Button id='button-send' handleClick={onSubmit} text={'enviar'} />
+          <div><Button id='button-send' handleClick={onSubmit} text={'ENVIAR'} /></div>
         </div>
       </section>
     </>

@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Asap+Condensed:700|Open+Sans&display=swap');
+
+.button {
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 18px;
+    background-color: #272727;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+    
+    cursor: pointer;
+    margin: 8px;
+}
+
+.button:hover {
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 18px;
+    background-color: #ff8c1a;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+    
+    cursor: pointer;
+}

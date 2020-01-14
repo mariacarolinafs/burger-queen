@@ -17,7 +17,7 @@
     margin: 8px;
 }
 
-.order-name, .order-table, .order-order, .order-item {
+.order-name, .order-table, .order-order, .order-item, .order-date {
     font-family: 'Asap Condensed', sans-serif;
     font-size: 20px;
     color: #65382e;

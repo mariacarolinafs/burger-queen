@@ -4,8 +4,8 @@
 .menu-card {
     float: left;
     justify-content: center;
-    height: 250px;
-    width: 220px;
+    height: 230px;
+    width: 200px;
     border-radius: 5px;
     box-shadow: -5px 7px 13px rgb(116, 113, 113);
     cursor: pointer;
@@ -19,7 +19,7 @@
 }
 
 .image {
-    width: 150px;
+    width: 130px;
     display: flex;
     align-items: center;
     justify-content: center;

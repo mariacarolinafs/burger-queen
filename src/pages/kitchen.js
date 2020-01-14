@@ -1,10 +1,12 @@
 import React from 'react';
 import KitchenApp from '../components/Kitchen/kitchen.js'
+import Nav from '../components/Nav/nav.js'
 
-function Kitchen () {
+function Kitchen() {
     return (
-        <div> 
-            <KitchenApp/>
+        <div>
+            <Nav />
+            <KitchenApp />
         </div>
     )
 }

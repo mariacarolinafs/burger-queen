@@ -1,19 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=Asap+Condensed:700|Open+Sans&display=swap');
 
 
-
 ul li {
-    display: inline-block; 
+    display: inline-block;
     padding:15px;
-  }
+}
   
-  .link {
+.link-home {
     color: white;
     text-decoration: none;
     font-family: 'Asap Condensed', sans-serif;
     font-size: 35px;
-  }
+}
+
+.links {
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+
+.home {
+    background-image: url('https://image.freepik.com/foto-gratis/hamburguesa-casera-hamburguesa-queso-carne-sobre-fondo-madera-hamburguesa-casera-clasica_90380-271.jpg');
+    background-size: cover;
+    height: 100vh;
+}
+
   
-  .link:hover {
+.link-home:hover {
     color:orange;
-  }
+}
