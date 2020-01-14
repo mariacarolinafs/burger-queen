@@ -70,7 +70,7 @@ const Menu = () => {
   const addmenos = (item) => {
     if (item.count === 1) {
       const addmenoss = order.filter(product => {
-        return product != item
+        return product !== item
       })
       setOrder([...addmenoss])
     } else {
@@ -80,7 +80,7 @@ const Menu = () => {
   }
 
   const deleteItem = (item) => {
-    const remove = (order.findIndex((e) => e.name == item.name))
+    const remove = (order.findIndex((e) => e.name === item.name))
     order.splice(remove, 1);
     setOrder([...order]);
   }
@@ -111,7 +111,7 @@ const Menu = () => {
       </div>
       <div className="second-menu">
         <section className="menu-lunch">
-          <p class="lunch">MENU TRADICIONAL</p>
+          <p className="lunch">MENU TRADICIONAL</p>
           <div className='menu-item'>
 
             {item2.map((lunch) => <Card handleClick={() => verifyOptions(lunch)}

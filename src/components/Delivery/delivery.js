@@ -25,7 +25,7 @@ const Delivery = () => {
         firebase.firestore().collection('client').doc(id).update({
             delivered: new Date().getTime(),
         })
-        setOrder(order.filter(item => item.id != id))
+        setOrder(order.filter(item => item.id !== id))
     }
 
     return (
@@ -34,8 +34,8 @@ const Delivery = () => {
                 {order.map(doc => {
                     if (!doc.delivered && doc.done) {
                         return (
-                            <div>
-                                <card className="order-card">
+                            <>
+                                <div className="order-card">
                                     <div>
                                         <p className="order-date">{new Date(doc.date).toLocaleString('pt-BR')}</p>
                                         <p className="order-name">NOME: {doc.client}</p>
@@ -46,8 +46,8 @@ const Delivery = () => {
                                         )}
                                     </div>
                                     <Button handleClick={() => delivered(doc.id)} text={'ENTREGUE'} />
-                                </card>
-                            </div>
+                                </div>
+                            </>
                         )
                     } else {
                         return (null)

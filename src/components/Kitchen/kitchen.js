@@ -25,7 +25,7 @@ const KitchenApp = () => {
         firebase.firestore().collection('client').doc(id).update({
             done: new Date().getTime(),
         })
-        setOrder(order.filter(item => item.id != id))
+        setOrder(order.filter(item => item.id !== id))
     }
 
 
@@ -35,8 +35,8 @@ const KitchenApp = () => {
                 {order.map(doc => {
                     if (!doc.done) {
                         return (
-                            <div>
-                                <card className="order-card">
+                            <>
+                                <div className="order-card">
                                     <div>
                                         <p className="order-date">{new Date(doc.date).toLocaleString('pt-BR')}</p>
                                         <p className="order-name">NOME: {doc.client}</p>
@@ -47,8 +47,8 @@ const KitchenApp = () => {
                                         )}
                                     </div>
                                     <Button handleClick={() => done(doc.id)} text={'PRONTO'} />
-                                </card>
-                            </div>
+                                </div>
+                            </>
                         )
                     } else {
                         return (null)

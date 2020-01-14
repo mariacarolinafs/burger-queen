@@ -5,8 +5,8 @@ import Logo from './burger_queen.png';
 
 function Nav() {
     return (
-        <div class="nav">
-            <div class="logo">
+        <div className="nav">
+            <div className="logo">
                 <img src={Logo} alt="logo" width={"100px"} />
             </div>
             <nav>
