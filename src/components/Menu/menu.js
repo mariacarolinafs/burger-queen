@@ -132,7 +132,7 @@ const Menu = () => {
             <div>{modal.item.options.map(elem => (<>
               <input type="radio" name="options" value={elem} onChange={() => setOptions(`${options} ${elem}`)} /><label>{elem}</label></>))}
             </div>
-            <button onClick={() => add({ ...modal.item, name: modal.item.name + " " + options + extras })}>Adicionar</button>
+            <Button handleClick={() => add({ ...modal.item, name: modal.item.name + " " + options + extras })} text={"ADICIONAR"} />
           </div>
         </div>
       ) : false}
