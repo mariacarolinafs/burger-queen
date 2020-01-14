@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import firebase from '../../utils/firebase.js';
-import Nav from '../Nav/nav.js'
-import Card from '../Card/card.js';
 import Button from '../Button/button.js'
-import '../Card/card.css'
-import '../Kitchen/kitchen.css'
+import '../Delivery/delivery.css'
 
 const Delivery = () => {
     const [order, setOrder] = useState([]);
@@ -27,34 +24,33 @@ const Delivery = () => {
     const delivered = (id) => {
         firebase.firestore().collection('client').doc(id).update({
             delivered: new Date().getTime(),
-          })
-          setOrder(order.filter(item => item.id != id))
+        })
+        setOrder(order.filter(item => item.id != id))
     }
-
 
     return (
         <>
-            <Nav />
-            <div className="kitchen-order">
+            <div className="delivery-order">
                 {order.map(doc => {
-                    if(!doc.delivered && doc.done){
-                     return (
-                        <>
-                        <card class="order-card">
+                    if (!doc.delivered && doc.done) {
+                        return (
                             <div>
-                                <p className="order-date">{new Date(doc.date).toLocaleString('pt-BR')}</p>
-                                <p className="order-name">NOME: {doc.client}</p>
-                                <p className="order-table">MESA: {doc.table}</p>
-                                <p className="order-order">PEDIDO:</p>
-                                {doc.order.map(item =>
-                                    <div><p className="order-item">{item.count} -- {item.name} </p></div>
-                                )}
+                                <card className="order-card">
+                                    <div>
+                                        <p className="order-date">{new Date(doc.date).toLocaleString('pt-BR')}</p>
+                                        <p className="order-name">NOME: {doc.client}</p>
+                                        <p className="order-table">MESA: {doc.table}</p>
+                                        <p className="order-order">PEDIDO:</p>
+                                        {doc.order.map(item =>
+                                            <div><p className="order-item">{item.count} -- {item.name} </p></div>
+                                        )}
+                                    </div>
+                                    <Button handleClick={() => delivered(doc.id)} text={'ENTREGUE'} />
+                                </card>
                             </div>
-                        </card>
-                        <Button handleClick={() => delivered(doc.id)} text={'enviar'}/>
-                        </>
-                    )}else{
-                        return(null)
+                        )
+                    } else {
+                        return (null)
                     }
                 }
                 )}

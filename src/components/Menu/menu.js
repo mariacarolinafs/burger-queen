@@ -5,6 +5,7 @@ import Button from '../Button/button.js'
 import Input from '../Input/input.js'
 import '../Card/card.css'
 import '../Menu/menu.css'
+import '../Input/input.css'
 
 const Menu = () => {
   const [client, setClient] = useState('');

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import firebase from '../../utils/firebase.js';
 import Button from '../Button/button.js'
-import '../Card/card.css'
 import '../Kitchen/kitchen.css'
 
 const KitchenApp = () => {
@@ -37,7 +36,7 @@ const KitchenApp = () => {
                     if (!doc.done) {
                         return (
                             <div>
-                                <card class="order-card">
+                                <card className="order-card">
                                     <div>
                                         <p className="order-date">{new Date(doc.date).toLocaleString('pt-BR')}</p>
                                         <p className="order-name">NOME: {doc.client}</p>
@@ -47,9 +46,8 @@ const KitchenApp = () => {
                                             <div><p className="order-item">{item.count} -- {item.name} </p></div>
                                         )}
                                     </div>
+                                    <Button handleClick={() => done(doc.id)} text={'PRONTO'} />
                                 </card>
-                                <div>
-                                    <Button handleClick={() => done(doc.id)} text={'PRONTO'} /></div>
                             </div>
                         )
                     } else {

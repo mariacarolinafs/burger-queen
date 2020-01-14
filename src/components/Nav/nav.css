@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Asap+Condensed:700|Open+Sans&display=swap');
 
-
 *{transition:all 0.3s ease-in-out;}
 
 .nav {
@@ -11,11 +10,11 @@
 }
 
 nav {
-    float:right;
+  float:right;
 }
 
 .logo img {
-    float:left;
+  float:left;
 }
 
 ul li {

@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Asap+Condensed:700|Open+Sans&display=swap');
+
+.input {
+    border-radius: 3px;
+    width: 300px;
+    height: 30px;
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: 30px;
+    color: #65382e;
+    text-align: center;
+    border-style: solid;
+}

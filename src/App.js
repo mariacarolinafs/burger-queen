@@ -1,11 +1,7 @@
 import React from 'react';
-//import './App.css';
-import Menu from './components/Menu/menu.js'
-import './components/Card/card.css'
 import Kitchen from './pages/kitchen.js'
 import Service from './pages/service.js'
-import Delivery from './components/Delivery/delivery.js'
-import Nav from './components/Nav/nav.js'
+import Delivery from './pages/delivery.js'
 import Home from './components/Home/home.js'
 import {
   BrowserRouter as Router,
